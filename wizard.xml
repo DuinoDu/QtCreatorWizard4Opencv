@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
+** Contact: http://www.qt-project.org/legal
+**
+** This file is part of Qt Creator.
+**
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and Digia.  For licensing terms and
+** conditions see http://www.qt.io/licensing.  For further information
+** use the contact form at http://www.qt.io/contact-us.
+**
+** GNU Lesser General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU Lesser
+** General Public License version 2.1 or version 3 as published by the Free
+** Software Foundation and appearing in the file LICENSE.LGPLv21 and
+** LICENSE.LGPLv3 included in the packaging of this file.  Please review the
+** following information to ensure the GNU Lesser General Public License
+** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
+** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** In addition, as a special exception, Digia gives you certain additional
+** rights.  These rights are described in the Digia Qt LGPL Exception
+** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qmakeproject" firstpage="10"
+        id="A.newplugin" category="B.CustomProjects">
+    <icon>opencv-logo.png</icon>
+    <description>Creates an simple OpenCV demo.</description>
+    <displayname>OpenCV App</displayname>;
+    <displaycategory>Custom Projects</displaycategory>
+    
+	<files>
+        <file source="myopencv.cpp" target="%PluginName:l%.%CppSourceSuffix%" openeditor="true"/>
+        <file source="myopencv.pro" target="%PluginName:l%.pro" openproject="true"/>  
+    </files>
+	
+    <!-- Create a 2nd wizard page with parameters -->
+    <fieldpagetitle>OpenCV Configuration</fieldpagetitle>
+    <fields>
+	  <!-- Plugin name field -->
+        <field mandatory="true" name="PluginName">
+            <fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_]+$"
+                          defaulttext="MyOpenCV" />
+            <fielddescription>Applicantion name:</fielddescription>
+        </field>
+		<field mandatory="true" name="opencv_path">
+			<fieldcontrol class="Utils::PathChooser" 
+						  defaulttext="G:\softwareWin8\opencv\build"/>
+			<fielddescription>OpenCV path:</fielddescription>
+		</field>
+		<field name="opencv_version">
+			<fielddescription>OpenCV version:</fielddescription>
+			<fieldcontrol class="QComboBox" defaultindex="0">
+				<comboentries>
+					<comboentry value="249">
+						<comboentrytext>2.4.9</comboentrytext>
+					</comboentry>
+					<comboentry value="300">
+						<comboentrytext>3.0.0</comboentrytext>
+					</comboentry>
+				</comboentries>
+			</fieldcontrol>
+		</field>
+		<field name="compile_type">
+			<fielddescription>Compile type:</fielddescription>
+			<fieldcontrol class="QComboBox" defaultindex="1">
+				<comboentries>
+					<comboentry value="x86">
+						<comboentrytext>32 bits</comboentrytext>
+					</comboentry>
+					<comboentry value="x64">
+						<comboentrytext>64 bits</comboentrytext>
+					</comboentry>
+				</comboentries>
+			</fieldcontrol>
+		</field>
+		<field name="core">
+			<fieldcontrol class="QCheckBox" defaultvalue="true" truevalue="" falsevalue="# "/>
+            <fielddescription>core</fielddescription>
+		</field>
+		<field name="highgui">
+			<fieldcontrol class="QCheckBox" defaultvalue="true" truevalue="" falsevalue="# "/>
+            <fielddescription>highgui</fielddescription>
+		</field>
+		<field name="imgproc">
+			<fieldcontrol class="QCheckBox" defaultvalue="true" truevalue="" falsevalue="# "/>
+            <fielddescription>imgproc</fielddescription>
+		</field>
+		<field name="calib3d">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>calib3d</fielddescription>
+		</field>		
+		<field name="gpu">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>gpu</fielddescription>
+		</field>
+		<field name="legacy">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>legacy</fielddescription>
+		</field>		
+		<field name="ml">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>ml</fielddescription>
+		</field>
+		<field name="features2d">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>features2d</fielddescription>
+		</field>		
+		<field name="nonfree">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>nonfree</fielddescription>
+		</field>
+		<field name="objdetect">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>objdetect</fielddescription>
+		</field>
+		<field name="ocl">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>ocl</fielddescription>
+		</field>
+		<field name="photo">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>photo</fielddescription>
+		</field>		
+		<field name="stitching">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>stitching</fielddescription>
+		</field>
+		<field name="superres">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>superres</fielddescription>
+		</field>		
+		<field name="video">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>video</fielddescription>
+		</field>
+		<field name="videostab">
+			<fieldcontrol class="QCheckBox" truevalue="" falsevalue="# "/>
+            <fielddescription>videostab</fielddescription>
+		</field>
+	
+	</fields>
+	
+</wizard>
